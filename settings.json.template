@@ -36,7 +36,7 @@
     "user": "MONGOUSERX",
     "password": "MONGOPASSX",
     "database": "explorerdb",
-    "address": "localhost",
+    "address": "127.0.0.1",
     "port": 27017
   },
 
@@ -46,7 +46,7 @@
 
   // wallet settings
   "wallet": {
-    "host": "localhost",
+    "host": "127.0.0.1",
     "port": RPCPORTX,
     "user": "RPCUSERX",
     "pass": "RPCPASSX"
@@ -82,9 +82,9 @@
   // ensure links on API page are valid
   "api": {
     "blockindex": 555,
-    "blockhash": "28595e6ef042d54092692b9a1500b502eb34536e371596bdaf481680c6d61a10",
-    "txhash": "54cac965e0f69779786547a799610746e0ce3eaceaa93c06af71c5695edf1968",
-    "address": "SRR1f9KAWNj9om9bnEScDnLAx1J2TAmoca"
+    "blockhash": "ea235611b9510a667ec274b7faa800f242700c5e9f7aaef534b3d54a8802cda4",
+    "txhash": "9ED3C2010B44BAF8E3E3E3171447FE7832AEB3E9B3A7928DDFC2D4953018F608",
+    "address": "THSEyjeDst3FXiR4SCi5NQ8WdfJcu4oC7g"
   },
 
   // market settings
@@ -116,7 +116,7 @@
   },
 
   // twitter, facebook, googleplus, youtube
-  "twitter": "redstonecoin",
+  "twitter": "redstoneplatform",
   "facebook": "yourfacebookpage",
   "googleplus": "yourgooglepluspage",
   "youtube": "youryoutubechannel",
@@ -132,7 +132,7 @@
   "txcount": 100,
 
   //show total sent & received on address page (set false if PoS)
-  "show_sent_received": true,
+  "show_sent_received": false,
 
   // how to calculate current coin supply
   // COINBASE : total sent from coinbase (PoW)
@@ -159,5 +159,8 @@
   "labels": {
   //  "JSoEdU717hvz8KQVq2HfcqV9A79Wihzusu": {"label": "Developers address", "type":"primary", "url":"http://example.com"},
   //  "JSWVXHWeYNknPdG9uDrcBoZHztKMFCsndw": {"label": "Cryptsy"}
-  }
+  },
+  
+  // IP Stack API key (https://ipstack.com) used for Network IP info lookup
+  "ipstack_apikey": IPSTACK_APIKEY
 }

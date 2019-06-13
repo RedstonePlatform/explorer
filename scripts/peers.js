@@ -26,18 +26,24 @@ mongoose.connect(dbString, function(err) {
     request({uri: 'http://127.0.0.1:' + settings.port + '/api/getpeerinfo', json: true}, function (error, response, body) {
       lib.syncLoop(body.length, function (loop) {
         var i = loop.iteration();
-        var address = body[i].addr.split(':')[0];
+        if (body[i].addr.substr(1,7) == "::ffff:") {
+          var address = body[i].addr.substr(8);
+          address = address.replace(']','');
+          address = address.split(':')[0];
+        } else {
+          var address = body[i].addr.split(':')[0];
+        }
         db.find_peer(address, function(peer) {
           if (peer) {
             // peer already exists
             loop.next();
           } else {
-            request({uri: 'http://freegeoip.net/json/' + address, json: true}, function (error, response, geo) {
-              db.create_peer({
+            request({uri: 'http://api.ipstack.com/' + address + '?access_key=' + settings.ipstack_apikey, json: true}, function (error, response, geo) {
+            db.create_peer({
                 address: address,
                 protocol: body[i].version,
                 version: body[i].subver.replace('/', '').replace('/', ''),
-                country: geo.country_name
+                country: (geo.region_name == null ? '' : geo.region_name)  + '' + (geo.country_name == null ? geo.continent_name : ', ' + geo.country_name)
               }, function(){
                 loop.next();
               });
