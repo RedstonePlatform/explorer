@@ -162,5 +162,5 @@
   },
   
   // IP Stack API key (https://ipstack.com) used for Network IP info lookup
-  "ipstack_apikey": IPSTACK_APIKEY
+  "ipstack_apikey": "IPSTACK_APIKEY"
 }
